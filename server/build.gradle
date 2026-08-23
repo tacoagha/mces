@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // HTTP Server
+    implementation 'io.javalin:javalin:5.6.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    
+    // Logging
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    implementation 'ch.qos.logback:logback-classic:1.4.8'
+    
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:5.3.1'
+}
+
+task shadowJar(type: Jar) {
+    archiveClassifier = ''
+    from sourceSets.main.output
+    from configurations.runtimeClasspath.asFileTree.files.collect { zipTree(it) }
+    
+    manifest {
+        attributes 'Main-Class': 'dev.tacoagha.mces.MCESServer'
+    }
+}
+
+build.dependsOn shadowJar
