@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "mces",
+  "version": "${version}",
+  "name": "MCES - Minecraft Easy Servers",
+  "description": "In-game server management for MCES daemon",
+  "authors": [
+    "tacoagha"
+  ],
+  "contact": {
+    "homepage": "https://github.com/tacoagha/mces",
+    "sources": "https://github.com/tacoagha/mces",
+    "issues": "https://github.com/tacoagha/mces/issues"
+  },
+  "license": "GPL-3.0-only",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.tacoagha.mces.MCESMod"
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "cloth-config": "*"
+  }
+}
